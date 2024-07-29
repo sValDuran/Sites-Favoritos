@@ -11,7 +11,7 @@ import br.edu.ifsp.dmo.favoritos.databinding.ItemViewBinding
 import br.edu.ifsp.dmo.favoritos.model.Site
 import br.edu.ifsp.dmo.favoritos.view.listeners.SiteItemClickListener
 
-class SiteAdapter(val context: Context, val dataset: List<Site>, val listener: SiteItemClickListener) : RecyclerView.Adapter<SiteAdapter.ViewHolder>() {
+class SiteAdapter(val context: Context, val dataset: MutableList<Site>, val listener: SiteItemClickListener) : RecyclerView.Adapter<SiteAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val binding: ItemViewBinding = ItemViewBinding.bind(view)
@@ -33,7 +33,7 @@ class SiteAdapter(val context: Context, val dataset: List<Site>, val listener: S
         }
 
         holder.binding.imgHeart.setOnClickListener{listener.clickHeartSiteItem(position)}
-
+        holder.binding.imgDelete.setOnClickListener{listener.clickDeleteSiteItem(position)}
         holder.binding.layoutItem.setOnClickListener{listener.clickSiteItem(position)}
     }
 

@@ -41,6 +41,19 @@ class MainActivity : AppCompatActivity(), SiteItemClickListener {
         notifyAdapter()
     }
 
+    override fun clickDeleteSiteItem(position: Int){
+        val site = datasource[position]
+        AlertDialog.Builder(this)
+            .setTitle(R.string.delete_site)
+            .setMessage(getString(R.string.delete_confirmation, site.apelido))
+            .setPositiveButton(R.string.delete_site){ dialog, which ->
+                datasource.removeAt(position)
+                notifyAdapter()
+            }
+            .setNegativeButton(R.string.cancelar,null)
+            .show()
+    }
+
     private fun configListeners(){
         binding.buttonAdd.setOnClickListener{
             handleAddSite() }
